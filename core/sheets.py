@@ -34,7 +34,12 @@ _cache: dict | None = None  # {"leads": list[Lead], "col_idx": dict[str, int], "
 
 
 def _connect() -> gspread.Worksheet:
-    creds = Credentials.from_service_account_file("credentials.json", scopes=_SCOPES)
+    try:
+        creds = Credentials.from_service_account_file("credentials.json", scopes=_SCOPES)
+    except FileNotFoundError:
+        import streamlit as st
+        info = dict(st.secrets["gcp_service_account"])
+        creds = Credentials.from_service_account_info(info, scopes=_SCOPES)
     client = gspread.authorize(creds)
     return client.open_by_key(SHEET_ID).worksheet(SHEET_NAME)
 
