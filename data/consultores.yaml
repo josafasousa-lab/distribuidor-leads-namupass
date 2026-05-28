@@ -1,0 +1,13 @@
+consultores:
+  - nome: Alexandre Andrade
+    ac_user_id: 5
+    ativo: true
+  - nome: Caroline Souza
+    ac_user_id: 7
+    ativo: true
+  - nome: Cilene Mercês
+    ac_user_id: 10
+    ativo: true
+  - nome: Felipe Lima
+    ac_user_id: 25
+    ativo: true
